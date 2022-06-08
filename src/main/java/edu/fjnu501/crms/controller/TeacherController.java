@@ -1,6 +1,7 @@
 package edu.fjnu501.crms.controller;
 
 import edu.fjnu501.crms.domain.CourseOffering;
+import edu.fjnu501.crms.domain.Page;
 import edu.fjnu501.crms.domain.Result;
 import edu.fjnu501.crms.domain.TeacherCourseOfferingPage;
 import edu.fjnu501.crms.service.TeacherService;
@@ -42,6 +43,18 @@ public class TeacherController {
             return new Result(ResultCodeState.FAILED.getState(), StateDesc.PAGE_FAILED.getDesc(), null);
         }
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), teacherCourseOffering);
+    }
+
+    @RequestMapping(value = "/get/teachers")
+    @ResponseBody
+    public Result getAllTeachers(@RequestBody Page page) {
+        try {
+            teacherService.getAllTeachersByPage(page);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(ResultCodeState.FAILED.getState(), StateDesc.PAGE_FAILED.getDesc(), null);
+        }
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), page);
     }
 
 }

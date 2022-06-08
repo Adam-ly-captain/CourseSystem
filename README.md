@@ -16,3 +16,4 @@
 | /student/show/courseofferings | 获取学生分页选课列表数据（学生功能）           | sid为学生ID，pageNum为第N页数据，pageSize代表该页总数据量    | ![image-20220608185740180](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608185740180.png) |
 | /teacher/get/students         | 获取该课程设置下的分页学生信息数据（教师功能） | tid代表教师ID，courseOfferingId代表课程设置ID，pageNum代表第N页，pageSize代表该页数据量 | ![image-20220608180152495](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608180152495.png) |
 | /teacher/get/curriculum       | 获取教师课表（教师功能）                       | tid代表教师ID，pageNum为第N页数据，pageSize代表该页总数据量  | ![image-20220608191304183](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608191304183.png) |
+| /teacher/get/teachers         | 获取所有教师信息（管理员功能）                 | pageNum为第N页数据，pageSize代表该页总数据量                 | ![image-20220608221808245](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608221808245.png) |

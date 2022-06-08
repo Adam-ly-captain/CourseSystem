@@ -8,4 +8,6 @@ public interface TeacherMapper {
 
     List<User> getStudentsInfoByCourseOfferingId(int courseOfferingId);
 
+    List<User> getAllTeachers();
+
 }

@@ -3,6 +3,7 @@ package edu.fjnu501.crms.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import edu.fjnu501.crms.domain.CourseOffering;
+import edu.fjnu501.crms.domain.Page;
 import edu.fjnu501.crms.domain.TeacherCourseOfferingPage;
 import edu.fjnu501.crms.domain.User;
 import edu.fjnu501.crms.mapper.TeacherMapper;
@@ -38,6 +39,20 @@ public class TeacherServiceImpl implements TeacherService {
         PageInfo<User> pageInfo = new PageInfo<>(studentsInfoByCourseOfferingId);
         teacherCourseOffering.setTotalPages(pageInfo.getPages());
         teacherCourseOffering.setData(studentsInfoByCourseOfferingId);
+    }
+
+    @Override
+    public void getAllTeachersByPage(Page page) {
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List<User> allTeachers = getAllTeachers();
+        PageInfo<User> pageInfo = new PageInfo<>(allTeachers);
+        page.setTotalPages(pageInfo.getPages());
+        page.setData(allTeachers);
+    }
+
+    @Override
+    public List<User> getAllTeachers() {
+        return teacherMapper.getAllTeachers();
     }
 
 }

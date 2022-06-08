@@ -16,6 +16,7 @@
         <result column="course_week_start" property="startWeek"/>
         <result column="course_week_stop" property="stopWeek"/>
         <result column="max_num" property="maxNum"/>
+        <result column="current_num" property="currentNum"/>
     </resultMap>
 
     <select id="getAllCourseOfferingByTeacherId" parameterType="int" resultMap="courseOfferingMap">
