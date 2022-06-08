@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.fjnu501.crms.mapper.AccountMapper">
+
+    <resultMap id="userMap" type="user">
+        <id column="user_id" property="uid"/>
+        <result column="user_account" property="account"/>
+        <result column="user_pwd" property="password"/>
+        <result column="user_name" property="name"/>
+        <result column="user_role_id" property="roleId"/>
+    </resultMap>
+
+    <select id="getUserByUsername" parameterType="string" resultMap="userMap">
+        select * from user where user_account = #{username}
+    </select>
+
+    <select id="getUidByUsername" parameterType="string" resultType="int">
+        select user_id from user where user_account = #{username}
+    </select>
+
+    <select id="findMaxId" resultType="int">
+        select max(user_id) from user
+    </select>
+
+    <insert id="registerAccount" parameterType="user">
+        insert into user values (#{uid}, #{account}, #{password}, #{roleId}, #{name});
+    </insert>
+
+</mapper>

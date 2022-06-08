@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.fjnu501.crms.mapper.TeacherMapper">
+
+    <resultMap id="studentMap" type="user">
+        <id column="user_id" property="uid"/>
+        <result column="user_name" property="name"/>
+        <result column="user_role_id" property="roleId"/>
+    </resultMap>
+
+    <select id="getStudentsInfoByCourseOfferingId" parameterType="int" resultMap="studentMap">
+        SELECT u.* FROM `link` as l
+                            JOIN `user` as u
+                                 ON u.user_id = l.link_user_id and l.link_cosf_id = #{courseOfferingId}
+    </select>
+
+</mapper>

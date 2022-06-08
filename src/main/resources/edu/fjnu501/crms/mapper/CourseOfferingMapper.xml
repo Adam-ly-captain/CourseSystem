@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.fjnu501.crms.mapper.CourseOfferingMapper">
+
+    <resultMap id="courseOfferingMap" type="courseOffering">
+        <id column="course_offering_id" property="courseOfferingId"/>
+        <result column="classroom" property="classroom"/>
+        <result column="teacher_id" property="teacherId"/>
+        <result column="day_of_week" property="dayOfWeek"/>
+        <result column="lesson_of_day" property="lessonOfDay"/>
+        <result column="cosf_id" property="courseId"/>
+        <result column="course_offering_name" property="courseOfferingName"/>
+        <result column="course_week_start" property="startWeek"/>
+        <result column="course_week_stop" property="stopWeek"/>
+        <result column="max_num" property="maxNum"/>
+    </resultMap>
+
+    <select id="getAllCourseOfferingByTeacherId" parameterType="int" resultMap="courseOfferingMap">
+        select * from course_offering where teacher_id = #{tid}
+    </select>
+
+    <select id="getAllCourseOfferingByClassroom" parameterType="string" resultMap="courseOfferingMap">
+        select * from course_offering where classroom = #{classroom}
+    </select>
+
+    <insert id="addCourseOffering" parameterType="courseOffering">
+        insert into course_offering values (#{courseOfferingId}, #{classroom}, #{teacherId}, #{dayOfWeek}, #{lessonOfDay}, #{courseId}, #{courseOfferingName}, #{startWeek}, #{stopWeek}, #{maxNum}, #{currentNum})
+    </insert>
+
+    <select id="getOthersCourseOfferingByTeacherId" resultMap="courseOfferingMap">
+        SELECT * FROM course_offering where course_offering_id not in (#{courseOfferingId}) and teacher_id = #{tid}
+    </select>
+
+    <select id="getOthersCourseOfferingByClassroom" resultMap="courseOfferingMap">
+        SELECT * FROM course_offering where course_offering_id not in (#{courseOfferingId}) and classroom = #{classroom}
+    </select>
+
+    <update id="updateCourseOffering" parameterType="courseOffering">
+        update course_offering set classroom = #{classroom}, teacher_id = #{teacherId}, day_of_week = #{dayOfWeek}, lesson_of_day = #{lessonOfDay}, cosf_id = #{courseId}, course_offering_name = #{courseOfferingName}, course_week_start = #{startWeek}, course_week_stop = #{stopWeek}, max_num = #{maxNum} where course_offering_id = #{courseOfferingId}
+    </update>
+
+    <select id="getAllCourseOffering" resultMap="courseOfferingMap">
+        select * from course_offering
+    </select>
+
+    <select id="getAllCourseOfferingByStudentId" parameterType="int" resultMap="courseOfferingMap">
+        SELECT l.* FROM `user` as u
+                            JOIN (SELECT course_offering.*, link.link_user_id FROM link JOIN course_offering on link.link_cosf_id = course_offering.course_offering_id) as l
+                                      on u.user_id = l.link_user_id and u.user_id = #{uid} and u.user_role_id = 2
+    </select>
+
+    <insert id="addStudentCourseOffering">
+        insert into link (link_cosf_id, link_user_id) values (#{courseOfferingId}, #{sid})
+    </insert>
+
+    <select id="getCourseOfferingByCourseOfferingId" parameterType="int" resultMap="courseOfferingMap">
+        select * from course_offering where course_offering_id = #{courseOfferingId}
+    </select>
+
+    <update id="addCurrentNum" parameterType="int">
+        update course_offering set current_num = current_num + 1 where course_offering_id = #{courseOfferingId}
+    </update>
+
+    <update id="reduceCurrentNum" parameterType="int">
+        update course_offering set current_num = current_num - 1 where course_offering_id = #{courseOfferingId}
+    </update>
+
+    <update id="deleteStudentCourseOffering" parameterType="studentCourseOffering">
+        delete from link where link_cosf_id = #{courseOfferingId} and link_user_id = #{sid}
+    </update>
+
+
+</mapper>
