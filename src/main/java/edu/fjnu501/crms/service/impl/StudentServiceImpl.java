@@ -7,6 +7,7 @@ import edu.fjnu501.crms.domain.StudentCourseOffering;
 import edu.fjnu501.crms.domain.StudentCourseOffering2;
 import edu.fjnu501.crms.domain.StudentCourseOfferingPage;
 import edu.fjnu501.crms.service.CourseOfferingService;
+import edu.fjnu501.crms.service.CurriculumService;
 import edu.fjnu501.crms.service.StudentService;
 import edu.fjnu501.crms.state.StateDesc;
 import edu.fjnu501.crms.state.StudentCourseOfferingState;
@@ -22,6 +23,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private CourseOfferingService courseOfferingService;
+
+    @Autowired
+    private CurriculumService curriculumService;
 
     @Override
     public void selectCourseOffering(StudentCourseOffering studentCourseOffering) throws IllegalAccessException {
@@ -85,6 +89,12 @@ public class StudentServiceImpl implements StudentService {
         PageInfo<CourseOffering> pageInfo = new PageInfo<>(courseOfferingsByStudentId);
         studentCourseOfferingPage.setTotalPages(pageInfo.getPages());
         studentCourseOfferingPage.setData(courseOfferingsByStudentId);
+    }
+
+    @Override
+    public Object getCurriculum(int sid) throws IllegalAccessException {
+        List<CourseOffering> courseOfferingsByStudentId = getCourseOfferingsByStudentId(sid);
+        return curriculumService.getNewCurriculum(courseOfferingsByStudentId);
     }
 
 }

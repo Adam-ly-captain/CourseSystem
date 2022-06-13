@@ -74,4 +74,19 @@ public class StudentController {
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), studentCourseOfferingPage);
     }
 
+    @RequestMapping(value = "/get/new/curriculum/{sid}")
+    @ResponseBody
+    public Result getCurriculum(@PathVariable("sid") int sid) {
+        Object curriculum = null;
+        try {
+            curriculum = studentService.getCurriculum(sid);
+        } catch (IllegalAccessException e) {
+            return new Result(ResultCodeState.INVALID.getState(), StateDesc.WEEKDAY_ERROR.getDesc(), null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(ResultCodeState.FAILED.getState(), StateDesc.SELECT_FAILED.getDesc(), null);
+        }
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SELECT_SUCCESS.getDesc(), curriculum);
+    }
+
 }

@@ -18,4 +18,6 @@ public interface StudentService {
 
     void getCourseOfferingsByStudentIdAndPage(StudentCourseOfferingPage studentCourseOfferingPage);
 
+    Object getCurriculum(int sid) throws IllegalAccessException;
+
 }
