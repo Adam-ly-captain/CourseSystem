@@ -6,7 +6,10 @@ import edu.fjnu501.crms.domain.CourseOffering;
 import edu.fjnu501.crms.domain.Page;
 import edu.fjnu501.crms.domain.StudentCourseOffering;
 import edu.fjnu501.crms.mapper.CourseOfferingMapper;
+import edu.fjnu501.crms.mapper.TeacherMapper;
 import edu.fjnu501.crms.service.CourseOfferingService;
+import edu.fjnu501.crms.service.CourseService;
+import edu.fjnu501.crms.service.TeacherService;
 import edu.fjnu501.crms.service.TimeService;
 import edu.fjnu501.crms.state.StateDesc;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +26,18 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
     @Autowired
     private TimeService timeService;
 
+    @Autowired
+    private TeacherService teacherService;
+
+    @Autowired
+    private CourseService courseService;
+
     @Override
     public void addCourseOffering(CourseOffering courseOffering) throws IllegalAccessException {
+        int teacherIdByTeacherName = teacherService.getTeacherIdByTeacherName(courseOffering.getTeacherName());
+        int courseIdByCourseName = courseService.getCourseIdByCourseName(courseOffering.getCourseName());
+        courseOffering.setTeacherId(teacherIdByTeacherName);
+        courseOffering.setCourseId(courseIdByCourseName);
         teacherTimeCheck(courseOffering);
         courseOfferingMapper.addCourseOffering(courseOffering);
     }

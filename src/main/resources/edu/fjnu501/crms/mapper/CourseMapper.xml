@@ -30,4 +30,8 @@
         select * from course where course_name = #{courseName}
     </select>
 
+    <select id="getCourseIdByCourseName" parameterType="string" resultType="int">
+        select course_id from course where course_name = #{courseName}
+    </select>
+
 </mapper>

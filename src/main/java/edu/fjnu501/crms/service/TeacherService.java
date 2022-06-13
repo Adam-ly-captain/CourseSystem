@@ -17,4 +17,6 @@ public interface TeacherService {
 
     List<User> getAllTeachers();
 
+    int getTeacherIdByTeacherName(String teacherName);
+
 }

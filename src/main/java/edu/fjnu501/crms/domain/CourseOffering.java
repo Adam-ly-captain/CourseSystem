@@ -14,6 +14,25 @@ public class CourseOffering {
     private int maxNum;
     private int currentNum;
 
+    private String courseName;
+    private String teacherName;
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
     public int getCurrentNum() {
         return currentNum;
     }
@@ -101,4 +120,5 @@ public class CourseOffering {
     public void setStopWeek(int stopWeek) {
         this.stopWeek = stopWeek;
     }
+
 }

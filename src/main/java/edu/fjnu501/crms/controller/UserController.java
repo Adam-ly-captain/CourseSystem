@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/user")
@@ -70,6 +72,18 @@ public class UserController {
     @ResponseBody
     public Result unlogin() {
         return new Result(ResultCodeState.UNLOGIN.getState(), StateDesc.NOT_LOGIN.getDesc(), null);
+    }
+
+    @RequestMapping("/logout")
+    @ResponseBody
+    public Result logout(HttpSession session) {
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.logout();
+        } catch (Exception e) {
+            return new Result(500, "登出失败", null);
+        }
+        return new Result(200, "成功登出", null);
     }
 
 }

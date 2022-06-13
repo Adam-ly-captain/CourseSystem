@@ -14,4 +14,6 @@ public interface CourseMapper {
 
     Course selectCourseByCourseName(String courseName);
 
+    int getCourseIdByCourseName(String courseName);
+
 }

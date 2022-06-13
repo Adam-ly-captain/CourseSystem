@@ -13,4 +13,6 @@ public interface CourseService {
 
     boolean checkCourseName(String courseName);
 
+    int getCourseIdByCourseName(String courseName);
+
 }

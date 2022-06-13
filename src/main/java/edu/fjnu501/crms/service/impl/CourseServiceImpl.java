@@ -56,4 +56,9 @@ public class CourseServiceImpl implements CourseService {
         return false;
     }
 
+    @Override
+    public int getCourseIdByCourseName(String courseName) {
+        return courseMapper.getCourseIdByCourseName(courseName);
+    }
+
 }

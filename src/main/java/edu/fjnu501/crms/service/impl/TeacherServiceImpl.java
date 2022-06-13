@@ -55,4 +55,9 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherMapper.getAllTeachers();
     }
 
+    @Override
+    public int getTeacherIdByTeacherName(String teacherName) {
+        return teacherMapper.getTeacherIdByTeacherName(teacherName);
+    }
+
 }

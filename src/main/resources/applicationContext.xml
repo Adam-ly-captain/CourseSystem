@@ -95,7 +95,9 @@
 <!--                /user/register = roles[registrar]-->
 <!--                /courseoffering/** = roles[registrar]-->
 <!--                /course/** = roles[registrar]-->
-<!--                /teacher/** = roles[teacher]-->
+<!--                /teacher/get/teachers = roles[registrar]-->
+<!--                /teacher/get/students = roles[teacher]-->
+<!--                /teacher/get/curriculum = roles[teacher]-->
 <!--                /student/** = roles[student]-->
                 /**= anon
 

@@ -10,4 +10,6 @@ public interface TeacherMapper {
 
     List<User> getAllTeachers();
 
+    int getTeacherIdByTeacherName(String teacherName);
+
 }
