@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/course")
@@ -59,6 +61,19 @@ public class CourseController {
             return new Result(ResultCodeState.FAILED.getState(), StateDesc.PAGE_FAILED.getDesc(), null);
         }
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), page);
+    }
+
+    @RequestMapping(value = "/get/all")
+    @ResponseBody
+    public Result getAllCourse() {
+        List<Course> allCourse = null;
+        try {
+            allCourse = courseService.getAllCourse();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(ResultCodeState.FAILED.getState(), StateDesc.SELECT_FAILED.getDesc(), null);
+        }
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SEARCH_SUCCESS.getDesc(), allCourse);
     }
 
 }

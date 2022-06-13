@@ -14,7 +14,8 @@ public enum StateDesc {
     UNAUTHORIZED("权限不足"), NOT_LOGIN("未登录"),
     COURSE_NAME_CONFLICT("课程名重复"),
     CLASSROOM_REPEATED("教室名重复"), CLASSROOM_NAME_NULL("教室名不能为空"), CLASSROOM_EXIST_DELETE("已有课程设置使用该教室名，无法删除"),
-    SEARCH_SUCCESS("查找成功"),SEARCH_FAILED("查找失败");
+    SEARCH_SUCCESS("查找成功"),SEARCH_FAILED("查找失败"),
+    WEEKDAY_ERROR("不存在该星期日");
 
     private String desc;
 

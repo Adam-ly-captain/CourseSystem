@@ -34,7 +34,7 @@ public class CourseServiceImpl implements CourseService {
         courseMapper.updateCourse(course);
     }
 
-    private List<Course> getAllCourse() {
+    public List<Course> getAllCourse() {
         return courseMapper.getAllCourse();
     }
 

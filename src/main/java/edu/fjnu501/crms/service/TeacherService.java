@@ -19,4 +19,6 @@ public interface TeacherService {
 
     int getTeacherIdByTeacherName(String teacherName);
 
+    Object getTeacherNewCurriculum(int tid) throws IllegalAccessException;
+
 }

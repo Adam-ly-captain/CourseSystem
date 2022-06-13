@@ -3,6 +3,8 @@ package edu.fjnu501.crms.service;
 import edu.fjnu501.crms.domain.Course;
 import edu.fjnu501.crms.domain.Page;
 
+import java.util.List;
+
 public interface CourseService {
 
     void addCourse(Course course) throws IllegalAccessException;
@@ -14,5 +16,7 @@ public interface CourseService {
     boolean checkCourseName(String courseName);
 
     int getCourseIdByCourseName(String courseName);
+
+    List<Course> getAllCourse();
 
 }

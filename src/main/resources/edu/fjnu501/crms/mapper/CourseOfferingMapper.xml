@@ -17,6 +17,8 @@
         <result column="course_week_stop" property="stopWeek"/>
         <result column="max_num" property="maxNum"/>
         <result column="current_num" property="currentNum"/>
+        <result column="course_name" property="courseName"/>
+        <result column="user_name" property="teacherName"/>
     </resultMap>
 
     <select id="getAllCourseOfferingByTeacherId" parameterType="int" resultMap="courseOfferingMap">
@@ -44,7 +46,10 @@
     </update>
 
     <select id="getAllCourseOffering" resultMap="courseOfferingMap">
-        select * from course_offering
+        SELECT co.*, c.course_name, u.user_name FROM course_offering as co
+                                                         JOIN course as c
+                                                         JOIN `user` as u
+                                                              ON co.cosf_id = c.course_id and co.teacher_id = u.user_id and u.user_role_id = 1
     </select>
 
     <select id="getAllCourseOfferingByStudentId" parameterType="int" resultMap="courseOfferingMap">

@@ -81,4 +81,16 @@ public class ClassroomController {
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SEARCH_SUCCESS.getDesc(), classroom);
     }
 
+    @RequestMapping(value = "/get/all")
+    public Result getAllClassrooms() {
+        List<Classroom> allClassroom = null;
+        try {
+            allClassroom = classroomService.getAllClassroom();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(ResultCodeState.FAILED.getState(), StateDesc.SELECT_FAILED.getDesc(), null);
+        }
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SELECT_SUCCESS.getDesc(), allClassroom);
+    }
+
 }
