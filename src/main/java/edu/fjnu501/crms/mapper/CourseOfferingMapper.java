@@ -34,4 +34,6 @@ public interface CourseOfferingMapper {
 
     void deleteStudentCourseOffering(StudentCourseOffering studentCourseOffering);
 
+    void updateClassroom(@Param("originClassroomName") String originClassroomName, @Param("destClassroomName") String destClassroomName);
+
 }

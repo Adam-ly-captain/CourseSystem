@@ -32,4 +32,6 @@ public interface CourseOfferingService {
 
     List<CourseOffering> getAllCourseOffering();
 
+    void updateClassroom(String originClassroomName, String destClassroomName);
+
 }

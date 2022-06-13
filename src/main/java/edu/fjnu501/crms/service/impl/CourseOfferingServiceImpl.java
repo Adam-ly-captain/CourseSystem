@@ -120,4 +120,9 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
         return courseOfferingMapper.getAllCourseOffering();
     }
 
+    @Override
+    public void updateClassroom(String originClassroomName, String destClassroomName) {
+        courseOfferingMapper.updateClassroom(originClassroomName, destClassroomName);
+    }
+
 }
