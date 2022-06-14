@@ -27,3 +27,4 @@
 | /classroom/get/page               | 获取教室分页数据（管理员功能）                 | pageNum代表第N页、pageSize代表该页的数据量                   | ![image-20220613220021291](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220613220021291.png) |
 | /classroom/search/{keyword}       | 根据关键词查找教室（所有人都可使用）           | keyword代表教室关键词，返回列表数据                          | http://localhost:8080/classroom/search/知明1                 |
 | /classroom/get/all                | 查询所有教室（管理员功能）                     | 获取所有教室信息                                             | http://localhost:8080/classroom/get/all                      |
+| /user/logout                      | 注销账号（所有人都可使用）                     | 注销账号，不需要传参                                         | http://localhost:8080/user/logout                            |
