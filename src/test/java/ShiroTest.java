@@ -7,7 +7,7 @@ public class ShiroTest {
     @Test
     public void test1() {
         User user = new User();
-        user.setAccount("root");
+        user.setAccount("t3");
         user.setPassword("123");
         String s = MD5Password.MD5Pwd(user);
         System.out.println(s);

@@ -8,4 +8,6 @@ public interface CurriculumService {
 
     Object getNewCurriculum(List<CourseOffering> allCourseOffering) throws IllegalAccessException;
 
+    Object getNewCurriculum2(List<CourseOffering> allCourseOffering);
+
 }

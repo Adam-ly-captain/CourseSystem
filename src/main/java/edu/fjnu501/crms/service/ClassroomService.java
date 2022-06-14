@@ -2,6 +2,7 @@ package edu.fjnu501.crms.service;
 
 import edu.fjnu501.crms.domain.Classroom;
 import edu.fjnu501.crms.domain.Page;
+import edu.fjnu501.crms.domain.PageSearch;
 
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface ClassroomService {
 
     void getClassroomByPage(Page page);
 
-    List<Classroom> searchClassroom(String keyword);
+    void searchClassroom(PageSearch pageSearch);
 
 }

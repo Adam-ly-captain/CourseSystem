@@ -2,6 +2,7 @@ package edu.fjnu501.crms.controller;
 
 import edu.fjnu501.crms.domain.Classroom;
 import edu.fjnu501.crms.domain.Page;
+import edu.fjnu501.crms.domain.PageSearch;
 import edu.fjnu501.crms.domain.Result;
 import edu.fjnu501.crms.service.ClassroomService;
 import edu.fjnu501.crms.state.ResultCodeState;
@@ -69,16 +70,15 @@ public class ClassroomController {
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), page);
     }
 
-    @RequestMapping(value = "/search/{keyword}")
-    public Result searchClassroom(@PathVariable("keyword") String keyword) {
-        List<Classroom> classroom = null;
+    @RequestMapping(value = "/search")
+    public Result searchClassroom(@RequestBody PageSearch pageSearch) {
         try {
-            classroom = classroomService.searchClassroom(keyword);
+            classroomService.searchClassroom(pageSearch);
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(ResultCodeState.FAILED.getState(), StateDesc.SEARCH_FAILED.getDesc(), null);
         }
-        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SEARCH_SUCCESS.getDesc(), classroom);
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SEARCH_SUCCESS.getDesc(), pageSearch);
     }
 
     @RequestMapping(value = "/get/all")

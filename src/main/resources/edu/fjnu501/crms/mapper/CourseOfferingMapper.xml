@@ -22,7 +22,10 @@
     </resultMap>
 
     <select id="getAllCourseOfferingByTeacherId" parameterType="int" resultMap="courseOfferingMap">
-        select * from course_offering where teacher_id = #{tid}
+        SELECT co.*, c.course_name, u.user_name FROM course_offering as co
+                                                         JOIN course as c
+                                                         JOIN `user` as u
+                                                              ON co.cosf_id = c.course_id and co.teacher_id = u.user_id and u.user_role_id = 1  and teacher_id = #{tid}
     </select>
 
     <select id="getAllCourseOfferingByClassroom" parameterType="string" resultMap="courseOfferingMap">
@@ -53,9 +56,11 @@
     </select>
 
     <select id="getAllCourseOfferingByStudentId" parameterType="int" resultMap="courseOfferingMap">
-        SELECT l.* FROM `user` as u
-                            JOIN (SELECT course_offering.*, link.link_user_id FROM link JOIN course_offering on link.link_cosf_id = course_offering.course_offering_id) as l
-                                      on u.user_id = l.link_user_id and u.user_id = #{uid} and u.user_role_id = 2
+        SELECT l.*, c.course_name, t.user_name FROM `user` as u
+                                                        JOIN (SELECT course_offering.*, link.link_user_id FROM link JOIN course_offering on link.link_cosf_id = course_offering.course_offering_id) as l
+                                                        JOIN course as c
+                                                        JOIN `user` as t
+                                                             on u.user_id = l.link_user_id and u.user_id = #{sid} and u.user_role_id = 2 and t.user_role_id = 1 and t.user_id = l.teacher_id and l.cosf_id = c.course_id
     </select>
 
     <insert id="addStudentCourseOffering">

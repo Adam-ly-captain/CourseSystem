@@ -1,5 +1,6 @@
 package edu.fjnu501.crms.service.impl;
 
+import edu.fjnu501.crms.domain.Classroom;
 import edu.fjnu501.crms.domain.CourseOffering;
 import edu.fjnu501.crms.service.CurriculumService;
 import edu.fjnu501.crms.state.LessonOfDay;
@@ -8,6 +9,7 @@ import edu.fjnu501.crms.state.WeekDay;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,6 +29,26 @@ public class CurriculumServiceImpl implements CurriculumService {
             setLessonOfDay(curriculum, courseOffering, courseOffering.getDayOfWeek() - 1);
         }
         return weekDay;
+    }
+
+    @Override
+    public Object getNewCurriculum2(List<CourseOffering> allCourseOffering) {
+//        ArrayList<ArrayList<CourseOffering>>weekDay = new ArrayList<>();
+//        initCurriculum(weekDay);
+//        for (CourseOffering courseOffering : allCourseOffering) {
+//
+//        }
+        return null;
+    }
+
+    public void initCurriculum(ArrayList<CourseOffering> weekDay) {
+//        for (int i = 0; i < 7; i++) {
+//            ArrayList<CourseOffering> curriculum = new ArrayList<>();
+//            for (int j = 0; j < 7; j++) {
+//
+//            }
+//            weekDay.add(curriculum);
+//        }
     }
 
     private void initCurriculum(ArrayList<HashMap<String, Object>> curriculum, HashMap<String, Object> weekDay) {
@@ -86,5 +108,7 @@ public class CurriculumServiceImpl implements CurriculumService {
             curriculum.get(weekOfDay).put(LessonOfDay.SixthLesson.getLessonSchedule(), courseOffering);
         }
     }
+
+
 
 }

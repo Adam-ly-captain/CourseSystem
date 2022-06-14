@@ -92,14 +92,16 @@
                 <!-- 注意：规则是有顺序的，从上到下，拦截范围必须是从小到大的 -->
                 <!--  url = 拦截规则（anon为匿名，authc为要登录后，才能访问，logout登出过滤） -->
                 /user/login = anon
-<!--                /user/register = roles[registrar]-->
-<!--                /courseoffering/** = roles[registrar]-->
-<!--                /course/** = roles[registrar]-->
-<!--                /teacher/get/teachers = roles[registrar]-->
-<!--                /teacher/get/students = roles[teacher]-->
-<!--                /teacher/get/curriculum = roles[teacher]-->
-<!--                /student/** = roles[student]-->
-                /**= anon
+                /user/register = roles[registrar]
+                /courseoffering/** = roles[registrar]
+                /course/** = roles[registrar]
+                /classroom/** = roles[registrar]
+                /teacher/get/teachers = roles[registrar]
+                /teacher/get/students = roles[teacher]
+                /teacher/get/curriculum = roles[teacher]
+                /teacher/get/new/curriculum/** = roles[teacher]
+                /student/** = roles[student]
+                /**= authc
 
             </value>
         </property>

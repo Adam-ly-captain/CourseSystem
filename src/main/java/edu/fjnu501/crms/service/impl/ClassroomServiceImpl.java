@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import edu.fjnu501.crms.domain.Classroom;
 import edu.fjnu501.crms.domain.CourseOffering;
 import edu.fjnu501.crms.domain.Page;
+import edu.fjnu501.crms.domain.PageSearch;
 import edu.fjnu501.crms.mapper.ClassroomMapper;
 import edu.fjnu501.crms.service.ClassroomService;
 import edu.fjnu501.crms.service.CourseOfferingService;
@@ -67,8 +68,12 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<Classroom> searchClassroom(String keyword) {
-        return classroomMapper.searchClassroom(keyword);
+    public void searchClassroom(PageSearch pageSearch) {
+        PageHelper.startPage(pageSearch.getPageNum(), pageSearch.getPageSize());
+        List<Classroom> classrooms = classroomMapper.searchClassroom(pageSearch.getKeyword());
+        PageInfo<Classroom> pageInfo = new PageInfo<>(classrooms);
+        pageSearch.setData(classrooms);
+        pageSearch.setTotalPages(pageInfo.getPages());
     }
 
     @Override
