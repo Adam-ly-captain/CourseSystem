@@ -99,9 +99,11 @@
                 /teacher/get/teachers = roles[registrar]
                 /teacher/get/students = roles[teacher]
                 /teacher/get/curriculum = roles[teacher]
+                /teacher/get/curriculum2 = roles[teacher]
                 /teacher/get/new/curriculum/** = roles[teacher]
                 /student/** = roles[student]
                 /**= authc
+<!--                /**= anon-->
 
             </value>
         </property>

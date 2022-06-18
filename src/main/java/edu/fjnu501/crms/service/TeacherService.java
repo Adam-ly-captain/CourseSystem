@@ -1,9 +1,6 @@
 package edu.fjnu501.crms.service;
 
-import edu.fjnu501.crms.domain.CourseOffering;
-import edu.fjnu501.crms.domain.Page;
-import edu.fjnu501.crms.domain.TeacherCourseOfferingPage;
-import edu.fjnu501.crms.domain.User;
+import edu.fjnu501.crms.domain.*;
 
 import java.util.List;
 
@@ -20,5 +17,7 @@ public interface TeacherService {
     int getTeacherIdByTeacherName(String teacherName);
 
     Object getTeacherNewCurriculum(int tid) throws IllegalAccessException;
+
+    void getTeacherCurriculum2(TeacherCourseOfferingPage2 teacherCourseOfferingPage2);
 
 }

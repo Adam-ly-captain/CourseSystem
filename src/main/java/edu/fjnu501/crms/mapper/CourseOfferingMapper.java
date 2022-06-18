@@ -36,4 +36,6 @@ public interface CourseOfferingMapper {
 
     void updateClassroom(@Param("originClassroomName") String originClassroomName, @Param("destClassroomName") String destClassroomName);
 
+    List<CourseOffering> getTeacherCurriculumByTeacherName(String teacherName);
+
 }

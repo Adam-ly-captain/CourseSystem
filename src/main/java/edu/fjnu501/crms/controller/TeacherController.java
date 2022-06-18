@@ -30,6 +30,18 @@ public class TeacherController {
         return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.SELECT_SUCCESS.getDesc(), teacherCourseOfferingPage);
     }
 
+    @RequestMapping(value = "/get/curriculum2")
+    @ResponseBody
+    public Result getTeacherCurriculum2(@RequestBody TeacherCourseOfferingPage2 teacherCourseOfferingPage2) {
+        try {
+            teacherService.getTeacherCurriculum2(teacherCourseOfferingPage2);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(ResultCodeState.FAILED.getState(), StateDesc.PAGE_FAILED.getDesc(), null);
+        }
+        return new Result(ResultCodeState.SUCCESS.getState(), StateDesc.PAGE_SUCCESS.getDesc(), teacherCourseOfferingPage2);
+    }
+
     @RequestMapping(value = "/get/new/curriculum/{tid}")
     @ResponseBody
     public Result getTeacherNewCurriculum(@PathVariable("tid") int tid) {

@@ -2,10 +2,12 @@ package edu.fjnu501.crms.service.impl;
 
 import edu.fjnu501.crms.domain.Classroom;
 import edu.fjnu501.crms.domain.CourseOffering;
+import edu.fjnu501.crms.mapper.CourseOfferingMapper;
 import edu.fjnu501.crms.service.CurriculumService;
 import edu.fjnu501.crms.state.LessonOfDay;
 import edu.fjnu501.crms.state.StateDesc;
 import edu.fjnu501.crms.state.WeekDay;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ import java.util.List;
 
 @Service("curriculumService")
 public class CurriculumServiceImpl implements CurriculumService {
+
+    @Autowired
+    private CourseOfferingMapper courseOfferingMapper;
 
     @Override
     public Object getNewCurriculum(List<CourseOffering> allCourseOffering) throws IllegalAccessException {
@@ -109,6 +114,9 @@ public class CurriculumServiceImpl implements CurriculumService {
         }
     }
 
-
+    @Override
+    public List<CourseOffering> getTeacherCurriculumByTeacherName(String teacherName) {
+        return courseOfferingMapper.getTeacherCurriculumByTeacherName(teacherName);
+    }
 
 }

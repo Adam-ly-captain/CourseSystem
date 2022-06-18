@@ -87,4 +87,10 @@
         update course_offering set classroom = #{destClassroomName} where classroom = #{originClassroomName}
     </update>
 
+    <select id="getTeacherCurriculumByTeacherName" parameterType="string" resultMap="courseOfferingMap">
+        SELECT co.*, t.user_name FROM `course_offering` as co
+                                          JOIN `user` as t
+                                               ON t.user_id = co.teacher_id and t.user_role_id = 1 and t.user_name = #{teacherName}
+    </select>
+
 </mapper>

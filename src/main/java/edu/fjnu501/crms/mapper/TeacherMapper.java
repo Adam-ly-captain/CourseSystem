@@ -1,5 +1,6 @@
 package edu.fjnu501.crms.mapper;
 
+import edu.fjnu501.crms.domain.CourseOffering;
 import edu.fjnu501.crms.domain.User;
 
 import java.util.List;

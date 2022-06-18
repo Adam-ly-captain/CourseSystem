@@ -18,6 +18,7 @@
 | /student/get/new/curriculum/{sid} | 获取学生新课表（学生功能）                     | sid代表学生ID                                                | http://localhost:8080/student/get/curriculum/4               |
 | /teacher/get/students             | 获取该课程设置下的分页学生信息数据（教师功能） | tid代表教师ID，courseOfferingId代表课程设置ID，pageNum代表第N页，pageSize代表该页数据量 | ![image-20220608180152495](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608180152495.png) |
 | /teacher/get/curriculum           | 获取教师课表（教师功能）                       | tid代表教师ID，pageNum为第N页数据，pageSize代表该页总数据量  | ![image-20220608191304183](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608191304183.png) |
+| /teacher/get/curriculum2          | 根据教师名获取所有课程设置（教师功能）         | teacherName代表教师名，pageNum代表第N页数据，pageSize代表该页总数据量 | ![image-20220618164638980](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220618164638980.png) |
 | /teacher/get/new/curriculum/{tid} | 获取新的教师课表（教师功能）                   | tid代表教师ID                                                | http://localhost:8080/teacher/get/new/curriculum/1           |
 | /teacher/get/teachers             | 获取所有教师信息（管理员功能）                 | pageNum为第N页数据，pageSize代表该页总数据量                 | ![image-20220608221808245](https://github.com/Adam-ly-captain/CourseSystem/blob/main/img/image-20220608221808245.png) |
 | /teacher/get/all                  | 获取所有教师信息（管理员功能）                 | 获取所有教师信息                                             | http://localhost:8080/teacher/get/all                        |

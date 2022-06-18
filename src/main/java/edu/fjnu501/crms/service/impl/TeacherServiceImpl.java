@@ -2,10 +2,7 @@ package edu.fjnu501.crms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import edu.fjnu501.crms.domain.CourseOffering;
-import edu.fjnu501.crms.domain.Page;
-import edu.fjnu501.crms.domain.TeacherCourseOfferingPage;
-import edu.fjnu501.crms.domain.User;
+import edu.fjnu501.crms.domain.*;
 import edu.fjnu501.crms.mapper.TeacherMapper;
 import edu.fjnu501.crms.service.CourseOfferingService;
 import edu.fjnu501.crms.service.CurriculumService;
@@ -73,6 +70,15 @@ public class TeacherServiceImpl implements TeacherService {
     public Object getTeacherNewCurriculum(int tid) throws IllegalAccessException {
         List<CourseOffering> allCourseOfferingByTeacherId = courseOfferingService.getAllCourseOfferingByTeacherId(tid);
         return curriculumService.getNewCurriculum(allCourseOfferingByTeacherId);
+    }
+
+    @Override
+    public void getTeacherCurriculum2(TeacherCourseOfferingPage2 teacherCourseOfferingPage2) {
+        PageHelper.startPage(teacherCourseOfferingPage2.getPageNum(), teacherCourseOfferingPage2.getPageSize());
+        List<CourseOffering> teacherCurriculumByTeacherName = curriculumService.getTeacherCurriculumByTeacherName(teacherCourseOfferingPage2.getTeacherName());
+        PageInfo<CourseOffering> pageInfo = new PageInfo<>(teacherCurriculumByTeacherName);
+        teacherCourseOfferingPage2.setData(teacherCurriculumByTeacherName);
+        teacherCourseOfferingPage2.setTotalPages(pageInfo.getPages());
     }
 
 }
